@@ -38,3 +38,9 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 - [periodic-Table-JSON](https://github.com/Bowserinator/Periodic-Table-JSON)
 - [atomic-bohr-model](https://github.com/ACollectionOfAtoms/atomic-bohr-model)
 - [chart.js](https://github.com/chartjs/Chart.js)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+
