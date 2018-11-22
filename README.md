@@ -2,8 +2,8 @@
 
 Periodicity is a dynamic periodic table built with Vue.js that animates and graphs data to aid the visualization of chemical concepts.
 
-[![Periodicity](./screenshot.png 'Periodicity')](https://periodicity.io)
-<img src="./screenshot2.png" width="50%"/>
+[![Periodicity](./screenshots/main.png 'Periodicity')](https://periodicity.io)
+<img src="./screenshots/trends.png" width="50%"/><img src="./screenshots/details.png" width="50%"/>
 
 ## Build Setup
 
