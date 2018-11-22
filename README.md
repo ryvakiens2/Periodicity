@@ -1,6 +1,6 @@
 # Periodicity
 
-Periodicity is a dynamic periodic table built with Vue.js that animates and graphs data to aid the visualization of chemical concepts.
+Periodicity is a dynamic, API-driven periodic table built with Vue.js that animates and graphs element data.
 
 [![Periodicity](./screenshots/main.png 'Periodicity')](https://periodicity.io)
 [![Periodicity](./screenshots/details.png 'Periodicity')](https://periodicity.io)
