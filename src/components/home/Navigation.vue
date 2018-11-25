@@ -1,8 +1,10 @@
 <template>
 	<div class="nav">
+		<!-- Hamburger menu -->
 		<span class="menuWrap" :style="menuPreload">
-			<Menu/>
+			<Menu />
 		</span>
+		<!-- Dynamic page header -->
 		<h1 :style="preloads">
 			Periodic
 			<span class="modeSelect" :class="isActive('table')" id="m1" @click="changeMode('table')">Table</span>
@@ -35,6 +37,7 @@ export default {
 		});
 	},
 	methods: {
+		//handle mode change
 		changeMode(mode) {
 			if (mode === 'trends') {
 				document.getElementById('m1').classList.remove('active');

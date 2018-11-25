@@ -1,5 +1,7 @@
+//import periodic table dataset
 var pt = require('periodic-table');
 
+//data corrections
 pt.elements.Helium.electronAffinity = '0';
 pt.elements.Neon.electronAffinity = '0';
 pt.elements.Argon.electronAffinity = '0';
@@ -20,7 +22,8 @@ pt.elements.Beryllium.electronAffinity = '0';
 pt.elements.Magnesium.electronAffinity = '0';
 pt.elements.Francium.meltingPoint = '300';
 
-pt.all().forEach(function (element) {
+//convert atomic mass to standard atomic mass
+pt.all().forEach(function(element) {
   var n = element.atomicNumber;
   var m = element.atomicMass;
   var exceptions = [57, 58, 59, 60, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 90, 91, 92];

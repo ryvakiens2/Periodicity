@@ -1,10 +1,11 @@
 <template>
 	<div class="wrap">
+		<!-- Trend selection -->
 		<v-select v-model="trend" :items="trends" label="Periodic Trend" class="select" @change="renderChart(true)" dark :color="selectColor[trend]" :hint="units[trend]" persistent-hint transition="scale-transition" origin="top right"></v-select>
+		<!-- Render trend graph -->
 		<div class="canvasWrap" :style="'height:'+height">
 			<canvas id="trendChart"></canvas>
 		</div>
-
 	</div>
 </template>
 
@@ -15,6 +16,7 @@ var pt = require('periodic-table');
 export default {
 	name: 'TrendBox',
 	props: ['current', 'height', 'active'],
+	//handle active element color
 	mounted: function() {
 		this.renderChart(false);
 		if (this.active) {
@@ -23,6 +25,7 @@ export default {
 		}
 	},
 	watch: {
+		//activate graph tooltip on element hover
 		current: function() {
 			if (this.tooltip) {
 				var activeElements = this.graph.tooltip._active;
@@ -109,6 +112,7 @@ export default {
 		};
 	},
 	methods: {
+		//check if element is in trend graph (some have no values)
 		isHoverable() {
 			//prettier-ignore
 			if (this.trend === 'Ionization Energy') {
@@ -149,6 +153,7 @@ export default {
 				}
 			}
 		},
+		//updating chart to new trend
 		renderChart(isUpdate) {
 			this.$root.$emit('displayTrend', this.trend);
 			var atomicNumbers = this.elements.map(function(el) {

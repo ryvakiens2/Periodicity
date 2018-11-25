@@ -1,9 +1,11 @@
 <template>
 	<div class="box">
+		<!-- Element header -->
 		<div class="header">
-			<span class="name" :class="classify(element)[1]">{{element.atomicNumber + ' - ' + element.name}}</span><br/>
+			<span class="name" :class="classify(element)[1]">{{element.atomicNumber + ' - ' + element.name}}</span><br />
 			<span class="classification" :class="classify(element)[1]">{{classify(element)[0]}}</span>
 		</div>
+		<!-- Element details -->
 		<div class="info">
 			<div class="state">
 				<p>Phase</p>
@@ -25,7 +27,7 @@
 			<v-tooltip bottom>
 				<div class="bohrOverlay" slot="activator">
 				</div>
-				<span>Bohr Model <br/>
+				<span>Bohr Model <br />
 					<span v-html="convertEC(element)"></span>
 				</span>
 			</v-tooltip>

@@ -1,12 +1,15 @@
 <template>
 	<v-app class="vueWrap" dark>
-		<Navigation/>
+		<!-- Navigation menu/header -->
+		<Navigation />
+		<!-- Periodic Table -->
 		<div class="tableWrap">
-			<PeriodicTable/>
+			<PeriodicTable />
 		</div>
+		<!-- Footer -->
 		<div style="clear:both;"></div>
 		<div class="footerWrap">
-			<Footer/>
+			<Footer />
 		</div>
 	</v-app>
 </template>

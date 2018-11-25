@@ -1,4 +1,5 @@
 <template>
+	<!-- Class based styling for each element -->
 	<div class="element" :style="preloadStyles">
 		<div class="atomicnumber">{{element.atomicNumber}}
 			<span>{{element.atomicMass}}</span>
@@ -23,6 +24,7 @@ export default {
 		}, 500);
 	},
 	methods: {
+		//convert dataset atomic mass to standard atomic mass
 		convertMass(element) {
 			var n = element.atomicNumber;
 			var m = element.atomicMass;

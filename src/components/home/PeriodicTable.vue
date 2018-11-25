@@ -1,8 +1,10 @@
 <template>
 	<div width="100%" id="table">
+		<!-- Spacers to create shape of periodic table -->
 		<div class="spacer1"></div>
 		<div class="spacer2"></div>
 		<div class="infoWrapper">
+			<!-- Introduction -->
 			<div v-if="!current & mode === 'table'" class="introduction" :style="loadHandler">
 				<div class="features">
 					<div class="tips">
@@ -15,15 +17,20 @@
 					<div id="bohr-intro-container" :style="introBohr"></div>
 				</div>
 			</div>
+			<!-- Element-hover triggered details -->
 			<InfoBox v-else-if="current && mode === 'table'" :element="current" :animations="animations" />
+			<!-- Element-right-click triggered atomic mass calculator -->
 			<AddBox v-else-if="mode === 'addition'" :elements="toBeSummed" :symbols="toBeSummedElements" />
+			<!-- Periodic Trends graphing controller -->
 			<TrendBox v-else :current="currentForTrend" />
 
 		</div>
 		<div class="spacer3"></div>
+		<!-- Loop over main-block elements in dataset, create element card -->
 		<div v-for="element in elements" :key="element.atomicNumber" v-if="isMain(element)" class="elementWrapper" @mouseenter="currentElement(element)" @mouseleave="clearCurrentForTrend()" @click.right="beginSumming(element)" oncontextmenu="return false;" style="z-index: 2">
 			<router-link :to="{ path: '/element/' + element.atomicNumber}" class="routerWrap">
 				<ElementCard v-if="mode === 'table' || mode === 'addition'" :element="element" :key="element.atomicNumber" :class="createElementClass(element)" />
+				<!-- Alternate card used when Periodic Trends mode is activated  -->
 				<TrendCard :trendToDisplay="trend" v-else-if="mode === 'trends'" :element="element" :key="element.atomicNumber" :class="createElementClass(element)" />
 			</router-link>
 		</div>
@@ -31,12 +38,14 @@
 		<div class="spacer5"></div>
 		<div class="spacer6"></div>
 		<div class="spacer7"></div>
+		<!-- For Lanthanides/Actinides, seperate from main elements -->
 		<div v-for="element in elements" :key="element.atomicNumber" v-if="isBlockF(element)" class="elementWrapper" @mouseenter="currentElement(element)" @mouseleave="clearCurrentForTrend()" @click.right="beginSumming(element)" oncontextmenu="return false;" style="z-index: 2">
 			<router-link :to="{ path: '/element/' + element.atomicNumber}" class="routerWrap">
 				<ElementCard v-if="mode === 'table' || mode === 'addition'" :element="element" :key="element.atomicNumber" :class="createElementClass(element)" />
 				<TrendCard :trendToDisplay="trend" v-else-if="mode === 'trends'" :element="element" :key="element.atomicNumber" :class="createElementClass(element)" />
 			</router-link>
 		</div>
+		<!-- Premature hover handler -->
 		<div class="hoverBlock" :style="block"></div>
 	</div>
 </template>
@@ -66,6 +75,7 @@ export default {
 			currentForTrend: null,
 			block: 'display: none',
 			trend: 'Ionization Energy',
+			//introduction information
 			points: [
 				{
 					class: 'point1',
@@ -88,6 +98,7 @@ export default {
 					color: 'slategrey',
 				},
 			],
+			//animation load orders by atomic number
 			nonMetal: [1, 6, 7, 8, 15, 16, 34],
 			alkali: [3, 11, 19, 37, 55, 87],
 			akaliEarth: [4, 12, 20, 38, 56, 88],
@@ -99,6 +110,7 @@ export default {
 			noble: [2, 10, 18, 36, 54, 86, 118],
 			lanthanoid: [57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71],
 			actinoid: [89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103],
+			//creates staggered page load effect
 			loadOrder: {
 				1: [1, 103],
 				2: [3, 102, 71, 118],
@@ -132,6 +144,7 @@ export default {
 			this.block = 'display: none';
 		}, 3000);
 		setTimeout(() => {
+			//create introduction bohr model
 			var atomicConfig = {
 				containerId: '#bohr-intro-container',
 				numElectrons: 78,
@@ -154,6 +167,8 @@ export default {
 			};
 			this.atomGraph = new Atom(atomicConfig);
 		}, 2100);
+
+		//global recievers
 		this.$root.$on('trends', text => {
 			this.mode = 'trends';
 		});
@@ -176,6 +191,7 @@ export default {
 		});
 	},
 	watch: {
+		//toggle mode
 		mode: function() {
 			this.trend = 'Ionization Energy';
 			if (this.mode === 'trends') {
@@ -185,22 +201,26 @@ export default {
 				}, 600);
 			}
 		},
+		//animation hover buffer
 		trend: function() {
 			this.block = 'display: block';
 			setTimeout(() => {
 				this.block = 'display: none';
 			}, 600);
 		},
+		//remove introduction model on element hover
 		current: function() {
 			this.introBohr = 'display: none';
 		},
 	},
 	methods: {
+		//atomic mass calculator addition
 		beginSumming(element) {
 			this.mode = 'addition';
 			this.toBeSummed.push(element.atomicMass);
 			this.toBeSummedElements.push(element.symbol);
 		},
+		//determine whether element is main or lanth/act
 		isMain(element) {
 			var n = element.atomicNumber;
 			return n < 57 || n >= 104 || (n >= 72 && n < 89);
@@ -209,6 +229,7 @@ export default {
 			var n = element.atomicNumber;
 			return !(n < 57 || n >= 104 || (n >= 72 && n < 89));
 		},
+		//create class for each element, used for styling in individual cards
 		createElementClass(element) {
 			var n = element.atomicNumber;
 			var loadIndex = '';
@@ -239,6 +260,7 @@ export default {
 				return 'metalloid l' + loadIndex;
 			}
 		},
+		//handles element hover
 		currentElement(element) {
 			this.current = element;
 			this.currentForTrend = element;

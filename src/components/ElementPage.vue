@@ -2,11 +2,13 @@
 	<v-app dark>
 		<v-container fluid grid-list-md style="padding: 0; height: 100%">
 			<v-layout row wrap class="layout">
+				<!-- Header -->
 				<v-flex xs12>
-					<p class="name">{{element.name}}<br/>
+					<p class="name">{{element.name}}<br />
 						<span :style="'color:'+classify(element)[2]">{{classify(element)[0]}}</span>
 					</p>
 				</v-flex>
+				<!-- Atomic Properties -->
 				<v-flex md4 sm12 xs12>
 					<div class="card" id="bohr">
 						<p>Atom</p>
@@ -14,21 +16,22 @@
 						<div style="clear: both"></div>
 						<div class="properties">
 							<div class="property" style="float:left">
-								<span>{{element.atomicNumber}}</span><br/>Atomic Number
+								<span>{{element.atomicNumber}}</span><br />Atomic Number
 							</div>
 							<div class="property" style="float:right">
-								<span>{{element.atomicMass}}</span><br/>Atomic Mass
+								<span>{{element.atomicMass}}</span><br />Atomic Mass
 							</div>
 							<div class="property" style="float:left">
-								<span v-html="convertEC(element)"></span><br/>e
+								<span v-html="convertEC(element)"></span><br />e
 								<sup>-</sup> Configuration
 							</div>
 							<div class="property" style="float:right">
-								<span>{{element.atomicRadius || 'unknown'}}</span><br/>Atomic Radius
+								<span>{{element.atomicRadius || 'unknown'}}</span><br />Atomic Radius
 							</div>
 						</div>
 					</div>
 				</v-flex>
+				<!-- Trends -->
 				<v-flex md8 sm12 xs12>
 					<div class="card" id="graph">
 						<p>Trends</p>
@@ -37,6 +40,7 @@
 						</div>
 					</div>
 				</v-flex>
+				<!-- Properties -->
 				<v-flex md12>
 					<div class="card" style="height: 26.5vw" id="info">
 						<v-tabs v-model="active" color="accent" fixed-tabs slider-color="white">
@@ -58,55 +62,54 @@
 							<v-tab-item :key='2'>
 								<div class="aboutList">
 									<p>
-										<span>{{element.standardState || 'unknown'}}</span> <br/> Phase at STP
+										<span>{{element.standardState || 'unknown'}}</span> <br /> Phase at STP
 									</p>
 									<p>
-										<span>{{element.density || 'unknown'}}</span><br/> Density at STP
+										<span>{{element.density || 'unknown'}}</span><br /> Density at STP
 									</p>
 									<p>
 										<span>{{element.meltingPoint || 'unknown'}}</span>
-										<span v-if="element.boilingPoint">K</span><br/> Melting Point
+										<span v-if="element.boilingPoint">K</span><br /> Melting Point
 									</p>
 									<p>
 										<span>{{element.boilingPoint || 'unknown'}}</span>
-										<span v-if="element.boilingPoint">K</span><br/> Boiling Point
+										<span v-if="element.boilingPoint">K</span><br /> Boiling Point
 									</p>
 									<p>
 										<span>{{dataJSON[element.atomicNumber - 1].molar_heat || 'unknown'}}</span>
-										<span v-if="dataJSON[element.atomicNumber - 1].molar_heat">J/molK</span><br/> Molar Heat
+										<span v-if="dataJSON[element.atomicNumber - 1].molar_heat">J/molK</span><br /> Molar Heat
 									</p>
 									<p>
-										<span>{{element.bondingType || 'unknown'}}</span><br/> Bonding Type
+										<span>{{element.bondingType || 'unknown'}}</span><br /> Bonding Type
 									</p>
 									<p>
 										<span>{{element.electronegativity || 'unknown'}}</span>
-										<span v-if="element.electronegativity">χr</span><br/> Electronegativity
+										<span v-if="element.electronegativity">χr</span><br /> Electronegativity
 									</p>
 									<p>
 										<span>{{element.electronAffinity|| 'unknown'}}</span>
-										<span v-if="element.electronAffinity">kJ/mol</span> <br/> Electron Affinity
+										<span v-if="element.electronAffinity">kJ/mol</span> <br /> Electron Affinity
 									</p>
 									<p>
 										<span>{{element.ionizationEnergy || 'unknown'}}</span>
-										<span v-if="element.ionizationEnergy">kJ/mol</span><br/> Ionization Energy
+										<span v-if="element.ionizationEnergy">kJ/mol</span><br /> Ionization Energy
 									</p>
 									<p>
 										<span>{{element.vanDelWaalsRadius || 'unknown'}}
 											<span v-if="element.vanDelWaalsRadius">pm</span>
-										</span><br/> Van Del Waals Radius
+										</span><br /> Van Del Waals Radius
 									</p>
 								</div>
 							</v-tab-item>
 						</v-tabs>
-
 					</div>
 				</v-flex>
 			</v-layout>
 		</v-container>
+		<!-- Footer -->
 		<div class="footerWrap">
 			<Footer width="88%" />
 		</div>
-
 	</v-app>
 </template>
 
@@ -124,14 +127,13 @@ export default {
 		Footer,
 	},
 	mounted() {
+		//configuration for atomic model
 		var atomicConfig = {
 			containerId: '#bohr-model-container',
 			numElectrons: this.element.atomicNumber,
-			// nucleusRadius: 30,
 			nucleusColor: this.classify(this.element)[3],
 			electronRadius: 2.5,
 			electronColor: this.classify(this.element)[2],
-			// orbitalSpacing: 10,
 			orbitalWidth: 1,
 			orbitalColor: this.classify(this.element)[3],
 			idNumber: 10,
@@ -146,9 +148,9 @@ export default {
 			symbolOffset: 8,
 			drawSymbol: true,
 		};
-
 		var myAtom = new Atom(atomicConfig);
 	},
+	//determine which element to display
 	created: function() {
 		var id = parseInt(this.$route.params.id);
 		this.element = Elements.find(x => x.atomicNumber === id);
@@ -174,9 +176,7 @@ export default {
 		};
 	},
 	methods: {
-		nextElement() {
-			this.$router.push({ path: `/element/${this.element.atomicNumber + 1}` });
-		},
+		//determine element styles
 		classify(element) {
 			var n = element.atomicNumber;
 			if (this.nonMetal.includes(n)) {
@@ -205,6 +205,7 @@ export default {
 				return ['Metalloid', 'metalloid', 'rgba(74, 114, 146, 0.9)', 'rgba(27, 67, 99, 1)'];
 			}
 		},
+		//convert electron configuration to readable form
 		convertEC(element) {
 			var ec = element.electronicConfiguration.split('');
 			var en = element.atomicNumber;

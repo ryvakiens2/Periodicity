@@ -1,9 +1,9 @@
 <template>
+	<!-- Class based styling for each element -->
 	<div class="element" :style="renderStyle(trendToDisplay, element)">
 		<div class="value">{{renderValue(trendToDisplay, element) || 'unknown'}}
 		</div>
 		<div class="symbol">{{element.symbol}}</div>
-		<!-- <div class="name">{{element.name}}</div> -->
 	</div>
 </template>
 
@@ -15,6 +15,7 @@ export default {
 		return {};
 	},
 	methods: {
+		//convert dataset atomic mass to standard atomic mass
 		convertMass(element) {
 			var n = element.atomicNumber;
 			var m = element.atomicMass;
@@ -26,8 +27,8 @@ export default {
 				return m.toString();
 			}
 		},
+		//determine which trend value to display (target for refractor)
 		renderValue(trend, element) {
-			//target for refractor
 			if (trend === 'Ionization Energy') {
 				return element.ionizationEnergy;
 			} else if (trend === 'Electronegativity') {
@@ -42,8 +43,8 @@ export default {
 				return element.density;
 			}
 		},
+		//determine styling of element card based on trend (target for refractor)
 		renderStyle(trend, element) {
-			//target for refractor
 			if (trend === 'Ionization Energy') {
 				var opacity = element.ionizationEnergy / 2372;
 				var background = `rgba(195, 37, 60, ${opacity}`;

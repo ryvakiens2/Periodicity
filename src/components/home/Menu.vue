@@ -1,6 +1,7 @@
 <template>
 	<v-layout wrap>
 		<v-icon class="menuIcon" @click.stop="drawer = !drawer" v-ripple>menu</v-icon>
+		<!-- Left-side navigation drawer -->
 		<v-navigation-drawer v-model="drawer" absolute temporary class="drawer info" style="width: 14vw">
 			<h1>Modes</h1>
 			<div class="item" v-for="item in items" :key="item.title" @click="changeMode(item.class)">
@@ -11,7 +12,6 @@
 			</div>
 			<v-switch label="Orbital Animations" v-model="electronAnimations" input-value="true" class="switch" color="white"></v-switch>
 		</v-navigation-drawer>
-
 	</v-layout>
 </template>
 

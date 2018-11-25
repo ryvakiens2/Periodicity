@@ -1,14 +1,17 @@
 <template>
 	<div class="box">
+		<!-- Exit button -->
 		<v-btn depressed flat class="exitButton">
 			<v-icon block class="exitIcon" @click="exit()">close</v-icon>
 		</v-btn>
+		<!-- Display chemical formula -->
 		<p class="addens">
-
 			<span>{{equation }}</span>
 		</p>
+		<!-- Display atomimc mass -->
 		<p class="sum">
-			<span v-html="compound"></span>= {{sum}}</p>
+			<span v-html="compound"></span>= {{sum}}
+		</p>
 	</div>
 </template>
 
@@ -24,6 +27,7 @@ export default {
 		};
 	},
 	watch: {
+		//handle additional element added
 		elements: function() {
 			var equation = '';
 			for (const element of this.elements) {
