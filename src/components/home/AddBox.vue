@@ -8,7 +8,7 @@
 		<p class="addens">
 			<span>{{equation }}</span>
 		</p>
-		<!-- Display atomimc mass -->
+		<!-- Display atomic mass -->
 		<p class="sum">
 			<span v-html="compound"></span>= {{sum}}
 		</p>
