@@ -4,7 +4,7 @@ Periodicity is a dynamic, API-driven periodic table built with Vue.js that anima
 
 [![Periodicity](./screenshots/main.png 'Periodicity')](https://periodicity.io)
 [![Periodicity](./screenshots/details.png 'Periodicity')](https://periodicity.io)
-[![Periodicity](./screenshots/trends.png 'Periodicity')](https://periodicity.io)
+[![Periodicity](./screenshots/trendgif.gif 'Periodicity')](https://periodicity.io)
 
 ## Build Setup
 
