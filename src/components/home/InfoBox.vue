@@ -29,10 +29,7 @@
             <div id="bohr-model-container"></div>
             <v-tooltip bottom>
                 <div class="bohrOverlay" slot="activator"></div>
-                <span>Bohr Model
-                    <br>
-                    <span v-html="convertEC(element)"></span>
-                </span>
+                <span v-html="convertEC(element)"></span>
             </v-tooltip>
         </div>
     </div>

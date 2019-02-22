@@ -75,8 +75,9 @@ export default {
     transition: opacity 1s ease;
     .atomicnumber {
         text-align: left;
-        color: rgba(255, 255, 255, 0.5);
+        color: rgba(255, 255, 255, 0.55);
         font-size: 0.65vw;
+        font-weight: 200;
         span {
             float: right;
             color: rgba(255, 255, 255, 0);
@@ -141,61 +142,61 @@ export default {
     transition-delay: 700ms; //
 }
 .alkali {
-    background-color: rgba(95, 42, 53, 0.9);
+    background-color: rgba(105, 47, 59, 0.75);
     &:hover {
         background-color: rgba(100, 50, 60, 0.5);
     }
 }
 .alkaliEarth {
-    background-color: rgba(95, 70, 55, 0.9);
+    background-color: rgba(95, 70, 55, 0.75);
     &:hover {
         background-color: rgba(93, 73, 61, 0.5);
     }
 }
 .transitionMetal {
-    background-color: rgba(58, 70, 90, 0.9);
+    background-color: rgba(58, 70, 90, 0.75);
     &:hover {
         background-color: rgba(59, 73, 98, 0.5);
     }
 }
 .noble {
-    background-color: rgba(87, 49, 126, 0.9);
+    background-color: rgba(87, 49, 126, 0.75);
     &:hover {
         background-color: rgba(96, 60, 130, 0.5);
     }
 }
 .halogen {
-    background-color: rgba(77, 74, 150, 0.9);
+    background-color: rgba(77, 74, 150, 0.75);
     &:hover {
         background-color: rgba(102, 100, 161, 0.5);
     }
 }
 .nonMetal {
-    background-color: rgba(52, 53, 109, 0.9);
+    background-color: rgba(52, 53, 109, 0.75);
     &:hover {
         background-color: rgba(46, 48, 108, 0.5);
     }
 }
 .metalloid {
-    background-color: rgba(21, 84, 100, 0.9);
+    background-color: rgba(21, 84, 100, 0.75);
     &:hover {
         background-color: rgba(34, 74, 106, 0.5);
     }
 }
 .postTransition {
-    background-color: rgba(28, 100, 73, 0.9);
+    background-color: rgba(28, 100, 73, 0.75);
     &:hover {
         background-color: rgba(34, 94, 79, 0.5);
     }
 }
 .lanthanoid {
-    background-color: rgba(74, 57, 110, 0.9);
+    background-color: rgba(74, 57, 110, 0.75);
     &:hover {
         background-color: rgba(80, 67, 111, 0.5);
     }
 }
 .actinoid {
-    background-color: rgba(64, 37, 80, 0.9);
+    background-color: rgba(64, 37, 80, 0.75);
     &:hover {
         background-color: rgba(62, 41, 73, 0.5);
     }

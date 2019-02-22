@@ -231,7 +231,7 @@ export default {
 
 <style lang="scss" scoped>
 .application.theme--dark {
-	background: rgba(30, 36, 50, 1) !important;
+	background: rgb(26, 31, 44) !important;
 	.layout {
 		width: 90%;
 		margin: auto !important;
