@@ -42,7 +42,7 @@ export default {
         };
     },
     mounted: function() {
-        TweenMax.to(".mainTitle", 0.5, { opacity: 1, delay: 1 });
+        TweenMax.to(".mainTitle", 0.5, { opacity: 1, delay: 0.5 });
         this.$root.$on("pushChange", text => {
             this.activeMode = text;
         });

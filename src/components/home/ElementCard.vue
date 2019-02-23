@@ -23,7 +23,7 @@ export default {
     },
     mounted: function() {
         if (this.loaded === false) {
-            TweenMax.to(".element", 0.5, { opacity: 1 });
+            TweenMax.to(".element", 0.7, { opacity: 1 });
         }
         this.loaded = true;
     },
@@ -108,22 +108,22 @@ export default {
     transition-delay: 0ms;
 }
 .l2 {
-    transition-delay: 100ms;
+    transition-delay: 80ms;
 }
 .l3 {
-    transition-delay: 180ms;
+    transition-delay: 160ms;
 }
 .l4 {
-    transition-delay: 260ms;
+    transition-delay: 230ms;
 }
 .l5 {
-    transition-delay: 320ms;
+    transition-delay: 300ms;
 }
 .l6 {
-    transition-delay: 380ms;
+    transition-delay: 360ms;
 }
 .l7 {
-    transition-delay: 430ms;
+    transition-delay: 420ms;
 }
 .l8 {
     transition-delay: 470ms;

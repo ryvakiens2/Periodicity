@@ -12,6 +12,11 @@ export default {
 
 <style lang="scss">
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,800|Raleway");
+
+html,
+body {
+    background: rgb(26, 31, 44);
+}
 #app {
     font-family: "Open Sans", sans-serif !important;
     -webkit-font-smoothing: antialiased;

@@ -16,7 +16,7 @@
                             <v-icon :style="{color: point.color}">{{point.icon}}</v-icon>
                             <p>{{point.description}}</p>
                         </div>-->
-                        <div class="point">
+                        <div class="point p3">
                             <v-icon style="color: slategrey">library_add</v-icon>
                             <div style="clear:both"></div>
                             <span>Right Click</span>
@@ -26,7 +26,7 @@
                                 <br>compounds
                             </p>
                         </div>
-                        <div class="point">
+                        <div class="point p2">
                             <v-icon style="color: lightsteelblue">poll</v-icon>
                             <div style="clear:both"></div>
 
@@ -37,7 +37,7 @@
                                 <br>periodic trends
                             </p>
                         </div>
-                        <div class="point">
+                        <div class="point p1">
                             <v-icon style="color: lightblue">assignment</v-icon>
                             <div style="clear:both"></div>
 
@@ -49,7 +49,7 @@
                             </p>
                         </div>
                     </div>
-                    <div id="bohr-intro-container" :style="introBohr"></div>
+                    <div id="bohr-intro-container" class="p4" :style="introBohr"></div>
                 </div>
             </div>
             <!-- Element-hover triggered details -->
@@ -130,7 +130,7 @@
             </router-link>
         </div>
         <!-- Premature hover handler -->
-        <div class="hoverBlock" :style="block"></div>
+        <div class="hoverBlock"></div>
     </div>
 </template>
 
@@ -156,7 +156,6 @@ export default {
             toBeSummedElements: [],
             current: null,
             currentForTrend: null,
-            block: "display: none",
             trend: "Ionization Energy",
             //animation load orders by atomic number
             nonMetal: [1, 6, 7, 8, 15, 16, 34],
@@ -229,6 +228,13 @@ export default {
     },
     mounted: function() {
         this.block = "display: block";
+        var t1 = new TimelineMax();
+        t1.to(".hoverBlock", 0, { display: "block" })
+            .from(".p1", 1, { opacity: 0, y: 10 }, "1")
+            .from(".p2", 1, { opacity: 0, y: 10 }, "-=0.6")
+            .from(".p3", 1, { opacity: 0, y: 10 }, "-=0.6")
+            .from(".p4", 1, { opacity: 0, y: 10 }, "-=0.6")
+            .to(".hoverBlock", 0, { display: "none" }, "-=0.6");
         setTimeout(() => {
             this.block = "display: none";
         }, 3000);
@@ -478,6 +484,7 @@ sup {
         }
     }
     .hoverBlock {
+        display: none;
         position: absolute;
         width: 100%;
         height: 100%;
