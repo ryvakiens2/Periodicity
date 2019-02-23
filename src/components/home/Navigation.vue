@@ -5,7 +5,7 @@
             <Menu/>
         </span>-->
         <!-- Dynamic page header -->
-        <h1 :style="preloads">
+        <h1 class="mainTitle">
             Periodicity
             <br>
             <span
@@ -36,7 +36,6 @@ export default {
     data() {
         return {
             activeMode: "table",
-            preloads: "opacity: 0; margin-top: -1vw",
             menuPreload: "opacity: 0"
         };
     },
@@ -75,12 +74,12 @@ export default {
 .nav {
     width: 100%;
     padding: 3.7vw;
-    padding-bottom: 4.3vw;
+    padding-bottom: 4.5vw;
     .menuWrap {
         float: left;
         transition: 0.5s;
     }
-    h1 {
+    h1.mainTitle {
         position: absolute;
         margin-left: 20vw;
         margin-top: -1.7vw;
@@ -88,11 +87,11 @@ export default {
         text-align: center;
         color: rgba(255, 255, 255, 0.9);
         font-weight: 300;
-        font-size: 2.3vw;
+        font-size: 2.6vw;
         opacity: 1;
         transition: 0.5s;
         #m1 {
-            margin-left: -4.36vw;
+            margin-left: -4.8vw;
         }
         #m2 {
             margin-left: -0.9vw;
@@ -105,7 +104,7 @@ export default {
             font-weight: 300;
             z-index: 3;
             padding: 0.1vw 0.4vw;
-            font-size: 1.1vw;
+            font-size: 1.3vw;
             background: rgba(255, 255, 255, 0.1);
             &:hover {
                 cursor: pointer;

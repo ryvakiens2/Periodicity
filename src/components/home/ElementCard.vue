@@ -1,6 +1,6 @@
 <template>
     <!-- Class based styling for each element -->
-    <div class="element" :style="preloadStyles">
+    <div class="element" v-show="mode === 'table' || mode === 'addition'">
         <div class="atomicnumber">
             {{element.atomicNumber}}
             <span>{{element.atomicMass}}</span>
@@ -11,18 +11,21 @@
 </template>
 
 <script>
+import { TweenMax } from "gsap";
+
 export default {
     name: "ElementCard",
-    props: ["element"],
+    props: ["element", "mode"],
     data() {
         return {
-            preloadStyles: "opacity: 0"
+            loaded: false
         };
     },
     mounted: function() {
-        setTimeout(() => {
-            this.preloadStyles = "opacity: 1";
-        }, 500);
+        if (this.loaded === false) {
+            TweenMax.to(".element", 0.5, { opacity: 1 });
+        }
+        this.loaded = true;
     },
     methods: {
         //convert dataset atomic mass to standard atomic mass
@@ -68,11 +71,12 @@ export default {
     width: 100%;
     height: 100%;
     max-width: 4.86vw;
+    opacity: 0;
     max-height: 4.86vw;
     overflow: hidden;
     text-align: center;
     padding: 0.2vw;
-    transition: opacity 1s ease;
+    transition: opacity 0.4s;
     .atomicnumber {
         text-align: left;
         color: rgba(255, 255, 255, 0.55);
@@ -99,9 +103,7 @@ export default {
         color: rgba(255, 255, 255, 0.9);
     }
 }
-.preload {
-    opacity: 0;
-}
+//element fade delays
 .l1 {
     transition-delay: 0ms;
 }
@@ -121,82 +123,83 @@ export default {
     transition-delay: 380ms;
 }
 .l7 {
-    transition-delay: 440ms;
+    transition-delay: 430ms;
 }
 .l8 {
-    transition-delay: 500ms;
+    transition-delay: 470ms;
 }
 .l9 {
-    transition-delay: 550ms;
+    transition-delay: 510ms;
 }
 .l10 {
-    transition-delay: 600ms;
+    transition-delay: 550ms;
 }
 .l11 {
-    transition-delay: 640ms;
+    transition-delay: 580ms;
 }
 .l12 {
-    transition-delay: 670ms;
+    transition-delay: 610ms;
 }
 .l13 {
-    transition-delay: 700ms; //
+    transition-delay: 620ms;
 }
+//group colors
 .alkali {
-    background-color: rgba(105, 47, 59, 0.75);
+    background-color: rgba(114, 47, 61, 0.8);
     &:hover {
         background-color: rgba(100, 50, 60, 0.5);
     }
 }
 .alkaliEarth {
-    background-color: rgba(95, 70, 55, 0.75);
+    background-color: rgba(95, 70, 55, 0.8);
     &:hover {
         background-color: rgba(93, 73, 61, 0.5);
     }
 }
 .transitionMetal {
-    background-color: rgba(58, 70, 90, 0.75);
+    background-color: rgba(58, 70, 90, 0.8);
     &:hover {
         background-color: rgba(59, 73, 98, 0.5);
     }
 }
 .noble {
-    background-color: rgba(87, 49, 126, 0.75);
+    background-color: rgba(87, 49, 126, 0.8);
     &:hover {
         background-color: rgba(96, 60, 130, 0.5);
     }
 }
 .halogen {
-    background-color: rgba(77, 74, 150, 0.75);
+    background-color: rgba(77, 74, 150, 0.8);
     &:hover {
         background-color: rgba(102, 100, 161, 0.5);
     }
 }
 .nonMetal {
-    background-color: rgba(52, 53, 109, 0.75);
+    background-color: rgba(53, 54, 119, 0.8);
     &:hover {
         background-color: rgba(46, 48, 108, 0.5);
     }
 }
 .metalloid {
-    background-color: rgba(21, 84, 100, 0.75);
+    background-color: rgba(21, 84, 100, 0.8);
     &:hover {
         background-color: rgba(34, 74, 106, 0.5);
     }
 }
 .postTransition {
-    background-color: rgba(28, 100, 73, 0.75);
+    background-color: rgba(28, 100, 73, 0.8);
     &:hover {
         background-color: rgba(34, 94, 79, 0.5);
     }
 }
 .lanthanoid {
-    background-color: rgba(74, 57, 110, 0.75);
+    background-color: rgba(74, 57, 110, 0.8);
     &:hover {
         background-color: rgba(80, 67, 111, 0.5);
     }
 }
 .actinoid {
-    background-color: rgba(64, 37, 80, 0.75);
+    background-color: rgba(64, 37, 80, 0.8);
     &:hover {
         background-color: rgba(62, 41, 73, 0.5);
     }

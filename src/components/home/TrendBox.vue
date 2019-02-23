@@ -348,8 +348,6 @@ export default {
                     options: {
                         layout: {
                             padding: {
-                                top: 10,
-                                bottom: 10,
                                 left: 10,
                                 right: 10
                             }
@@ -452,7 +450,6 @@ export default {
 .wrap {
     width: 100%;
     height: 100%;
-    margin: auto;
     .v-input__slot {
         border-color: white;
         margin-top: 1vw;
@@ -471,7 +468,7 @@ export default {
     .canvasWrap {
         display: block;
         height: 11.8vw;
-        margin-top: 0.1vw;
+        margin-top: 0.18vw;
         #trendChart {
             width: 100%;
             margin: auto;

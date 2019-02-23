@@ -5,7 +5,7 @@
         <div class="spacer2"></div>
         <div class="infoWrapper">
             <!-- Introduction -->
-            <div v-if="!current & mode === 'table'" class="introduction" :style="loadHandler">
+            <div v-if="!current & mode === 'table'" class="introduction">
                 <div class="features">
                     <div class="tips">
                         <!-- <div
@@ -82,7 +82,7 @@
         >
             <router-link :to="{ path: '/element/' + element.atomicNumber}" class="routerWrap">
                 <ElementCard
-                    v-if="mode === 'table' || mode === 'addition'"
+                    :mode.sync="mode"
                     :element="element"
                     :key="element.atomicNumber"
                     :class="createElementClass(element)"
@@ -90,7 +90,7 @@
                 <!-- Alternate card used when Periodic Trends mode is activated  -->
                 <TrendCard
                     :trendToDisplay="trend"
-                    v-else-if="mode === 'trends'"
+                    :mode.sync="mode"
                     :element="element"
                     :key="element.atomicNumber"
                     :class="createElementClass(element)"
@@ -115,14 +115,14 @@
         >
             <router-link :to="{ path: '/element/' + element.atomicNumber}" class="routerWrap">
                 <ElementCard
-                    v-if="mode === 'table' || mode === 'addition'"
+                    :mode.sync="mode"
                     :element="element"
                     :key="element.atomicNumber"
                     :class="createElementClass(element)"
                 />
                 <TrendCard
                     :trendToDisplay="trend"
-                    v-else-if="mode === 'trends'"
+                    :mode.sync="mode"
                     :element="element"
                     :key="element.atomicNumber"
                     :class="createElementClass(element)"
@@ -147,7 +147,6 @@ export default {
     name: "PeriodicTable",
     data() {
         return {
-            loadHandler: "",
             elements: Elements,
             mode: "table",
             atomGraph: null,
@@ -159,30 +158,6 @@ export default {
             currentForTrend: null,
             block: "display: none",
             trend: "Ionization Energy",
-            //introduction information
-            points: [
-                {
-                    class: "point1",
-                    icon: "open_in_new",
-                    description:
-                        "Hover an element to view general information, or click to see its detailed page",
-                    color: "lightblue"
-                },
-                {
-                    class: "point2",
-                    icon: "poll",
-                    description:
-                        "Graph and visualize periodic trends through the periodic trend mode in the menu or header",
-                    color: "lightsteelblue"
-                },
-                {
-                    class: "point4",
-                    icon: "library_add",
-                    description:
-                        "Easily find the masses of compounds by right clicking the elements of which they comprise",
-                    color: "slategrey"
-                }
-            ],
             //animation load orders by atomic number
             nonMetal: [1, 6, 7, 8, 15, 16, 34],
             alkali: [3, 11, 19, 37, 55, 87],
@@ -253,9 +228,6 @@ export default {
         AddBox
     },
     mounted: function() {
-        setTimeout(() => {
-            this.loadHandler = "opacity: 1; margin-top: 0";
-        }, 2000);
         this.block = "display: block";
         setTimeout(() => {
             this.block = "display: none";
@@ -406,7 +378,6 @@ sup {
         height: 100%;
         padding: 1vw 1.5vw 0 1.5vw;
         line-height: 1.3vw;
-        opacity: 0;
         transition: 1s;
         margin-top: 0.5vw;
         .features {
@@ -414,7 +385,7 @@ sup {
             color: rgba(255, 255, 255, 0.8);
             width: 100%;
             height: 100%;
-            margin-top: -0.5vw;
+            margin-top: -0.1vw;
             .tips {
                 width: 68%;
                 margin-top: 2.5vw;
@@ -443,7 +414,7 @@ sup {
                     }
                     i {
                         text-align: center;
-                        font-size: 4.5vw;
+                        font-size: 4.1vw;
                         opacity: 0.7;
                         margin-top: 1vw;
                         margin-bottom: 0.35vw;
