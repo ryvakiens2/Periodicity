@@ -1,33 +1,36 @@
 <template>
     <div class="nav">
-        <!-- Hamburger menu -->
+        <!--DISABLED Hamburger menu (redundant navigation)-->
         <!-- <span class="menuWrap" :style="menuPreload">
             <Menu/>
         </span>-->
         <!-- Dynamic page header -->
-        <h1 class="mainTitle">
-            Periodicity
+        <h1 class="mainTitle">Periodicity
             <br>
-            <span
-                class="modeSelect"
-                v-ripple
-                :class="isActive('table')"
-                id="m1"
-                @click="changeMode('table')"
-            >Table</span>
-            <span
-                class="modeSelect"
-                v-ripple
-                :class="isActive('trends')"
-                id="m2"
-                @click="changeMode('trends')"
-            >Trends</span>
+            <p>
+                <span
+                    class="modeSelect"
+                    v-ripple
+                    :class="isActive('table')"
+                    id="m1"
+                    @click="changeMode('table')"
+                >Table</span>
+                <span
+                    class="modeSelect"
+                    v-ripple
+                    :class="isActive('trends')"
+                    id="m2"
+                    @click="changeMode('trends')"
+                >Trends</span>
+            </p>
         </h1>
     </div>
 </template>
 
 <script>
 import Menu from "./Menu";
+// import { TweenMax } from "gsap";
+
 export default {
     name: "Navigation",
     components: {
@@ -35,15 +38,11 @@ export default {
     },
     data() {
         return {
-            activeMode: "table",
-            menuPreload: "opacity: 0"
+            activeMode: "table"
         };
     },
     mounted: function() {
-        setTimeout(() => {
-            this.preloads = "";
-            this.menuPreload = "";
-        }, 1700);
+        TweenMax.to(".mainTitle", 0.5, { opacity: 1, delay: 1 });
         this.$root.$on("pushChange", text => {
             this.activeMode = text;
         });
@@ -73,43 +72,51 @@ export default {
 <style lang="scss" scoped>
 .nav {
     width: 100%;
-    padding: 3.7vw;
-    padding-bottom: 4.5vw;
+    padding: 3.7vw 0 2vw 0;
     .menuWrap {
         float: left;
         transition: 0.5s;
     }
     h1.mainTitle {
-        position: absolute;
-        margin-left: 20vw;
+        // position: absolute;
+        margin-left: 24vw;
         margin-top: -1.7vw;
         width: 50%;
         text-align: center;
         color: rgba(255, 255, 255, 0.9);
         font-weight: 300;
         font-size: 2.6vw;
-        opacity: 1;
+        opacity: 0;
         transition: 0.5s;
-        #m1 {
-            margin-left: -4.8vw;
-        }
-        #m2 {
-            margin-left: -0.9vw;
+        p {
+            margin-left: 19.7vw;
+            text-align: center;
+            font-size: 0;
+            position: absolute;
+            z-index: 900000009;
         }
         .modeSelect {
+            display: inline;
             opacity: 0.3;
-            margin-top: -0vw;
             transition: 0.5s ease;
-            position: absolute;
             font-weight: 300;
-            z-index: 3;
-            padding: 0.1vw 0.4vw;
+            padding: 0.15vw 0.5vw;
             font-size: 1.3vw;
+            border-radius: 0.2vw;
+
             background: rgba(255, 255, 255, 0.1);
             &:hover {
                 cursor: pointer;
                 opacity: 0.6;
             }
+        }
+        #m1 {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+        #m2 {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
         }
         .active {
             opacity: 1;
