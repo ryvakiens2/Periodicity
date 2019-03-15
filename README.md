@@ -30,7 +30,6 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
   - [vuetify.js](https://github.com/vuetifyjs/vuetify)
   - [vue-router](https://github.com/vuejs/vue-router)
 - [webpack](https://github.com/webpack/webpack)
-- [webpack](https://github.com/webpack/webpack)
 - [node.js](https://github.com/nodejs/node) - compilement
   - [express](https://github.com/webpack/webpack)
 
