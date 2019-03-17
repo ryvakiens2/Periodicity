@@ -8,7 +8,7 @@
                 >open source</a> application graphs and animates periodic data with the aim of making the concept of periodicity easier to grasp.
             </v-card-text>
             <v-flex primary lighten-2 py-3 text-xs-center xs12 class="copy">
-                &copy;2018 -
+                &copy;{{new Date().getFullYear()}} -
                 <span>Kadin Zhang</span>
             </v-flex>
         </v-layout>
