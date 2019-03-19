@@ -1,6 +1,6 @@
 # Periodicity
 
-Periodicity is a dynamic, data-driven periodic table built with Vue.js that animates and graphs element data to demonstrate the beauty of Mendeleev's work, and make learning the periodic table easier.
+Periodicity is a dynamic, data-driven periodic table built with Vue.js that uses D3 animations and graphs to demonstrate the beauty of periodic trends and make learning the periodic table easier.
 
 [![Periodicity](./screenshots/periodicity2.png 'Periodicity')](https://periodicity.io)
 [![Periodicity](./screenshots/trendgif2.gif 'Periodicity')](https://periodicity.io)
@@ -30,6 +30,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
   - [vuetify.js](https://github.com/vuetifyjs/vuetify)
   - [vue-router](https://github.com/vuejs/vue-router)
 - [gsap](https://github.com/greensock/GreenSock-JS)
+- [D3.js](https://github.com/d3/d3)
 - [webpack](https://github.com/webpack/webpack)
 - [node.js](https://github.com/nodejs/node) - compilement
   - [express](https://github.com/webpack/webpack)
