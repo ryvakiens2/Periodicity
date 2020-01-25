@@ -6,19 +6,15 @@ import Router from 'vue-router'
 Vue.use(Router);
 
 const routes = [{
-    path: '/',
+    path: '/', // Homepage
     component: Home
   },
   {
-    path: '/element/:id',
+    path: '/element/:id', // Individualized element pages
     component: ElementPage
   },
   {
-    path: '/hi',
-    component: ElementPage
-  },
-  {
-    path: '*',
+    path: '*', // Redirect bad routes to Homepage
     redirect: '/'
   }
 ]
@@ -27,5 +23,5 @@ const Foo = () => import('@/components/ElementPage.vue')
 
 export default new Router({
   routes,
-  mode: 'history'
+  mode: 'history' // Pretty links
 })
