@@ -1,3 +1,6 @@
+<!-- Individualized element page via vue-router -->
+<!-- Generates page using dataset -->
+
 <template>
 	<v-app dark>
 		<v-container fluid grid-list-md style="padding: 0; height: 100%">
@@ -127,7 +130,7 @@ export default {
 		Footer,
 	},
 	mounted() {
-		//configuration for atomic model
+		// Configuration for atomic model
 		var atomicConfig = {
 			containerId: '#bohr-model-container',
 			numElectrons: this.element.atomicNumber,
@@ -150,7 +153,7 @@ export default {
 		};
 		var myAtom = new Atom(atomicConfig);
 	},
-	//determine which element to display
+	// Determine which element to display
 	created: function() {
 		var id = parseInt(this.$route.params.id);
 		this.element = Elements.find(x => x.atomicNumber === id);
@@ -176,7 +179,7 @@ export default {
 		};
 	},
 	methods: {
-		//determine element styles
+		// Determine element styles
 		classify(element) {
 			var n = element.atomicNumber;
 			if (this.nonMetal.includes(n)) {
@@ -205,7 +208,7 @@ export default {
 				return ['Metalloid', 'metalloid', 'rgba(74, 114, 146, 0.9)', 'rgba(27, 67, 99, 1)'];
 			}
 		},
-		//convert electron configuration to readable form
+		// Convert electron configuration to readable form
 		convertEC(element) {
 			var ec = element.electronicConfiguration.split('');
 			var en = element.atomicNumber;
